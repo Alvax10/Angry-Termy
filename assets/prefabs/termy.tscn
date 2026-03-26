@@ -1,12 +1,35 @@
-[gd_scene format=3 uid="uid://d4dh0swqdtpeh"]
+[gd_scene format=3 uid="uid://ewxjxx0dwjg7"]
 
 [ext_resource type="Script" uid="uid://x8h2d2chw2xq" path="res://scripts/event_bus.gd" id="1_83c57"]
-[ext_resource type="Texture2D" uid="uid://cqtswfvcx2n1v" path="res://icon.svg" id="2_5aife"]
+[ext_resource type="Script" uid="uid://bke0semwwv3jw" path="res://scripts/termybody2d.gd" id="1_hkg6s"]
+[ext_resource type="Texture2D" uid="uid://b3bs1ivmgds0f" path="res://icon.svg" id="2_5aife"]
+
+[sub_resource type="GDScript" id="GDScript_83c57"]
+script/source = "extends Node
+@export var character : CharacterBody2D
+@export var JumpHeight : float = 10
+
+var jumpvel : float 
+
+func _enter_tree() -> void:
+	jumpvel = sqrt(2 * character.get_gravity().y * JumpHeight)
+
+func Jump() -> void:
+	character.velocity.y = jumpvel
+	pass
+
+func slide() -> void:
+	character.velocity.y = -jumpvel
+	pass
+
+func throwAxe() ->void:
+	pass"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5aife"]
 size = Vector2(20, 41)
 
 [node name="Termy" type="CharacterBody2D" unique_id=2064964589]
+script = ExtResource("1_hkg6s")
 
 [node name="StateMachine" type="Node" parent="." unique_id=1372800451]
 
@@ -33,7 +56,9 @@ script = ExtResource("1_83c57")
 
 [node name="InputManager" type="Node" parent="." unique_id=855262822]
 
-[node name="Controller" type="Node" parent="." unique_id=1212181392]
+[node name="Controller" type="Node" parent="." unique_id=1212181392 node_paths=PackedStringArray("character")]
+script = SubResource("GDScript_83c57")
+character = NodePath("..")
 
 [node name="Collissions" type="CollisionShape2D" parent="." unique_id=1656551053]
 position = Vector2(0, -20.5)
