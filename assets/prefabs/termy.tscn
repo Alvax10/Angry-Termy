@@ -1,14 +1,9 @@
 [gd_scene format=3 uid="uid://d4dh0swqdtpeh"]
 
-<<<<<<< HEAD
 [ext_resource type="Script" uid="uid://x8h2d2chw2xq" path="res://scripts/event_bus.gd" id="1_bxtgl"]
 [ext_resource type="Script" uid="uid://du56ffyfneb0q" path="res://assets/prefabs/termyphysics.gd" id="1_rpela"]
 [ext_resource type="Texture2D" uid="uid://b3bs1ivmgds0f" path="res://icon.svg" id="2_5aife"]
 [ext_resource type="Script" uid="uid://vb0wl8jq35fr" path="res://scripts/controller.gd" id="4_rpela"]
-=======
-[ext_resource type="Script" path="res://scripts/event_bus.gd" id="1_83c57"]
-[ext_resource type="Texture2D" uid="uid://cqtswfvcx2n1v" path="res://icon.svg" id="2_5aife"]
->>>>>>> 8a3507cbc84e3b17c179598018a542557b2302a8
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5aife"]
 size = Vector2(20, 41)
