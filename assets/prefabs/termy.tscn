@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://d3qr4qgfr0qdt"]
+[gd_scene format=3 uid="uid://d4dh0swqdtpeh"]
 
-[ext_resource type="Script" uid="uid://x8h2d2chw2xq" path="res://Scripts/event_bus.gd" id="1_bxtgl"]
-[ext_resource type="Texture2D" uid="uid://b3bs1ivmgds0f" path="res://icon.svg" id="2_5aife"]
+[ext_resource type="Script" path="res://scripts/event_bus.gd" id="1_83c57"]
+[ext_resource type="Texture2D" uid="uid://cqtswfvcx2n1v" path="res://icon.svg" id="2_5aife"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5aife"]
 size = Vector2(20, 41)
@@ -10,12 +10,26 @@ size = Vector2(20, 41)
 
 [node name="StateMachine" type="Node" parent="." unique_id=1372800451]
 
+[node name="Running" type="Node" parent="StateMachine" unique_id=1188371069]
+
+[node name="Jump" type="Node" parent="StateMachine" unique_id=1402403447]
+
+[node name="Air" type="Node" parent="StateMachine" unique_id=22962776]
+
+[node name="Acrobat" type="Node" parent="StateMachine" unique_id=181597784]
+
+[node name="Slide" type="Node" parent="StateMachine" unique_id=1065219379]
+
+[node name="ThrowAxe" type="Node" parent="StateMachine" unique_id=883626459]
+
+[node name="Dead" type="Node" parent="StateMachine" unique_id=1921992645]
+
 [node name="Animator" type="Node" parent="." unique_id=987816434]
 
 [node name="FeedBackManager" type="Node" parent="." unique_id=1305031159]
 
 [node name="EventBus" type="Node" parent="." unique_id=234689073]
-script = ExtResource("1_bxtgl")
+script = ExtResource("1_83c57")
 
 [node name="RealTermy" type="Node" parent="." unique_id=1238946183]
 
