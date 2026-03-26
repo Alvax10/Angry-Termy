@@ -1,8 +1,17 @@
-[gd_scene format=3 uid="uid://ewxjxx0dwjg7"]
+[gd_scene format=3 uid="uid://d4dh0swqdtpeh"]
 
 [ext_resource type="Script" uid="uid://x8h2d2chw2xq" path="res://scripts/event_bus.gd" id="1_83c57"]
-[ext_resource type="Script" uid="uid://bke0semwwv3jw" path="res://scripts/termybody2d.gd" id="1_hkg6s"]
-[ext_resource type="Texture2D" uid="uid://b3bs1ivmgds0f" path="res://icon.svg" id="2_5aife"]
+[ext_resource type="Script" path="res://scripts/termybody2d.gd" id="1_hkg6s"]
+[ext_resource type="Texture2D" uid="uid://cqtswfvcx2n1v" path="res://icon.svg" id="2_5aife"]
+[ext_resource type="Script" uid="uid://cus8do4e1ghxw" path="res://scripts/state_machine.gd" id="2_kh7b0"]
+[ext_resource type="Script" uid="uid://c1p5o2jrq6ntw" path="res://scripts/RunningState.gd" id="3_ymkwl"]
+[ext_resource type="Script" uid="uid://dwqqiw7h0nrn4" path="res://scripts/JumpState.gd" id="4_spbtv"]
+[ext_resource type="Script" uid="uid://be0f6rx74ohgk" path="res://scripts/AirState.gd" id="5_pik32"]
+[ext_resource type="Script" uid="uid://ciq5caenoqo5v" path="res://scripts/AcrobatState.gd" id="6_xqrsk"]
+[ext_resource type="Script" uid="uid://db8tn2nc0h2dh" path="res://scripts/SlideState.gd" id="7_rarlc"]
+[ext_resource type="Script" uid="uid://com14ph3hja24" path="res://scripts/ThrowAxeState.gd" id="8_1fq4d"]
+[ext_resource type="Script" uid="uid://dhp0xyl63py46" path="res://scripts/DeadState.gd" id="9_f2tar"]
+[ext_resource type="Script" uid="uid://dqy6c8o12mb84" path="res://scripts/InputManager.gd" id="11_ymkwl"]
 
 [sub_resource type="GDScript" id="GDScript_83c57"]
 script/source = "extends Node
@@ -31,21 +40,40 @@ size = Vector2(20, 41)
 [node name="Termy" type="CharacterBody2D" unique_id=2064964589]
 script = ExtResource("1_hkg6s")
 
-[node name="StateMachine" type="Node" parent="." unique_id=1372800451]
+[node name="StateMachine" type="Node" parent="." unique_id=1372800451 node_paths=PackedStringArray("states", "inputManager", "eventBus")]
+script = ExtResource("2_kh7b0")
+states = {
+"Acrobat": NodePath("Acrobat"),
+"Air": NodePath("Air"),
+"Dead": NodePath("Dead"),
+"Jump": NodePath("Jump"),
+"Running": NodePath("Running"),
+"Slide": NodePath("Slide"),
+"ThrowAxe": NodePath("ThrowAxe")
+}
+inputManager = NodePath("../InputManager")
+eventBus = NodePath("../EventBus")
 
 [node name="Running" type="Node" parent="StateMachine" unique_id=1188371069]
+script = ExtResource("3_ymkwl")
 
 [node name="Jump" type="Node" parent="StateMachine" unique_id=1402403447]
+script = ExtResource("4_spbtv")
 
 [node name="Air" type="Node" parent="StateMachine" unique_id=22962776]
+script = ExtResource("5_pik32")
 
 [node name="Acrobat" type="Node" parent="StateMachine" unique_id=181597784]
+script = ExtResource("6_xqrsk")
 
 [node name="Slide" type="Node" parent="StateMachine" unique_id=1065219379]
+script = ExtResource("7_rarlc")
 
 [node name="ThrowAxe" type="Node" parent="StateMachine" unique_id=883626459]
+script = ExtResource("8_1fq4d")
 
 [node name="Dead" type="Node" parent="StateMachine" unique_id=1921992645]
+script = ExtResource("9_f2tar")
 
 [node name="Animator" type="Node" parent="." unique_id=987816434]
 
@@ -55,6 +83,7 @@ script = ExtResource("1_hkg6s")
 script = ExtResource("1_83c57")
 
 [node name="InputManager" type="Node" parent="." unique_id=855262822]
+script = ExtResource("11_ymkwl")
 
 [node name="Controller" type="Node" parent="." unique_id=1212181392 node_paths=PackedStringArray("character")]
 script = SubResource("GDScript_83c57")

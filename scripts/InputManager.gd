@@ -1,14 +1,12 @@
 extends Node
 class_name InputManager
+var myEnums : Enums
 
 var InputState : int
 var actions = {
-	Up = 1,
-	Down = 2,
-	Tap = 4,
-	"1" = "Up",
-	"2" = "Down",
-	"4" = "Tap"
+	Up = myEnums.Inputs.UP,
+	Down = myEnums.Inputs.DOWN,
+	Tap = myEnums.Inputs.TAP
 }
 # VER DOCUMENTACION Y VER COMO AGREGAR EL TAP XD
 
@@ -19,6 +17,7 @@ var actions = {
 
 func getInput() -> int:
 	var input : int = 0
+	print( myEnums.Inputs.UP )
 	if (Input.is_action_pressed("Up")):
 		input |= actions.get("Up")
 	

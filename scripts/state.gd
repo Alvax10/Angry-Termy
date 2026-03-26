@@ -10,5 +10,5 @@ func exit() -> void:
 func update(inputs : int, dt : float) -> void:
 	pass
 
-func onEvent() -> void:
+func onEvent(event : int, eventName : String, params : Dictionary) -> void:
 	pass
