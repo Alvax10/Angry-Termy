@@ -1,5 +1,5 @@
-### Angry Termy's Documentation
+# Angry Termy's Documentation
 
 ## A Guide & Database:
 
-# Everything we need, documented and saved
+### Everything we need, documented and saved
