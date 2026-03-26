@@ -1,12 +1,15 @@
 [gd_scene format=3 uid="uid://d3qr4qgfr0qdt"]
 
-[ext_resource type="Script" uid="uid://x8h2d2chw2xq" path="res://Scripts/event_bus.gd" id="1_bxtgl"]
+[ext_resource type="Script" uid="uid://x8h2d2chw2xq" path="res://scripts/event_bus.gd" id="1_bxtgl"]
+[ext_resource type="Script" uid="uid://du56ffyfneb0q" path="res://assets/prefabs/termyphysics.gd" id="1_rpela"]
 [ext_resource type="Texture2D" uid="uid://b3bs1ivmgds0f" path="res://icon.svg" id="2_5aife"]
+[ext_resource type="Script" uid="uid://vb0wl8jq35fr" path="res://scripts/controller.gd" id="4_rpela"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5aife"]
 size = Vector2(20, 41)
 
 [node name="Termy" type="CharacterBody2D" unique_id=2064964589]
+script = ExtResource("1_rpela")
 
 [node name="StateMachine" type="Node" parent="." unique_id=1372800451]
 
@@ -17,17 +20,17 @@ size = Vector2(20, 41)
 [node name="EventBus" type="Node" parent="." unique_id=234689073]
 script = ExtResource("1_bxtgl")
 
-[node name="RealTermy" type="Node" parent="." unique_id=1238946183]
-
-[node name="Sprite2D" type="Sprite2D" parent="RealTermy" unique_id=2026734247]
-position = Vector2(-1.9073486e-06, -20.5)
-scale = Vector2(0.15625, 0.3203125)
-texture = ExtResource("2_5aife")
-
 [node name="InputManager" type="Node" parent="." unique_id=855262822]
 
-[node name="Controller" type="Node" parent="." unique_id=1212181392]
+[node name="Controller" type="Node" parent="." unique_id=1212181392 node_paths=PackedStringArray("character")]
+script = ExtResource("4_rpela")
+character = NodePath("..")
 
 [node name="Collissions" type="CollisionShape2D" parent="." unique_id=1656551053]
 position = Vector2(0, -20.5)
 shape = SubResource("RectangleShape2D_5aife")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2026734247]
+position = Vector2(-1.9073486e-06, -20.5)
+scale = Vector2(0.15625, 0.3203125)
+texture = ExtResource("2_5aife")
